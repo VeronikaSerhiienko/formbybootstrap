@@ -10,10 +10,11 @@
 <!-- <body class="bg-secondary"> -->
 <body class="bg-light">  
   <div class="container">
-    <div class="pt-5 text-center">
-      <h1 class="text-primary font-weight-bold">Personal information</h1>
-      <span class="fas fa-user fa-2x text-info"></span>
+    <div class="pt-5 text-center mb-4">
+      <h1 class="text-primary font-weight-bold mb-4">Personal information</h1>
+      <span class="fas fa-user fa-2x text-info" data-toggle="popover" data-placement="right" data-trigger="hover" title="Personal information" data-content="Really big secret"></span>
     </div>
+    <hr class="text-primary mb-4">
     <form action="https://mate-academy-form-lesson.herokuapp.com/create-application" method="post">
       <div class="row">
         <fieldset class="col-lg-8 mb-4">
@@ -48,12 +49,10 @@
         			</div>
             </div>
           </div>
-          <div class="row container">
-            <div class="form-check form-check-inline align-middle">	
-              <label class="form-check-label mr-1" for="accept">I accept the terms of the agreement </label>
-              <input class="form-check-input" type="checkbox" name="acceptAgreement" id="accept">
-            </div>	
-          </div>	
+          <div class="custom-control custom-checkbox mb-4">
+            <input class="custom-control-input" name="agreement" id="agreement" type="checkbox" required>
+            <label class="custom-control-label" for="agreement">I accept the terms of the agreement</label>
+          </div>         
         </fieldset>
 
     		<fieldset class="col-lg-4 mb-4">
@@ -68,13 +67,15 @@
     				<input class="form-control" type="password" name="password" id="password" minlength="8" placeholder="Enter password"autocomplete="off" required>
     			</div>
     		</fieldset>
-      </div>    
-  		<div class="row col-12 justify-content-center">
-        <fieldset class="mb-4">
-    			<legend class="mb-3 text-info">An interesting fact about you?</legend>
-    			<div class="form-group form-inline">
-            <label class="mr-3">Do you love cats?</label>
-    				<div class="custom-radio custom-control mr-3">
+      </div>
+      <hr class="text-primary mb-4">    
+  		
+      <fieldset class="mb-4">
+  			<legend class="mb-3 text-info">An interesting fact about you?</legend>
+  			<div class="form-group row">
+          <label class="col-form-label col-lg-3 col-sm-6">Do you love cats?</label>
+          <div class="col-lg-3 col-sm-6">
+    				<div class="custom-radio custom-control">
     					<input class="custom-control-input" type="radio" name="loveCats" id="radiocats1" value="Yes">
     					<label class="custom-control-label text-success" for="radiocats1"> Yes</label>
     				</div>
@@ -83,48 +84,60 @@
     					<label class="text-danger custom-control-label" for="radiocats2"> Not </label>
     				</div>
           </div>
-    			<div class="form-group form-inline">
-    				<label class="mr-3" for="color"> What is your favourite color?</label>
-    				<input class="form-control col-3" type="color" name="favouriteColor" id="color">
-    			</div>
-    			<div class="form-group form-inline">
-    				<label class="mr-3" for="time"> What time do you go to bed?</label>
-    				<input class="form-control col-3" type="time" name="timeToGoToBed" id="time" >
-    			</div>	
-          <div class="form-group form-inline">
-    				<label class="mr-3"> What your favourite brand of car?</label>
-      			<div>
-      				<select class="form-control custom-select" multiple name="favouriteBrandOfCar" id="brandOfCar">
-      					<option value="BMW">BMW</option>
-      					<option value="Audi">Audi</option>
-      					<option selected value="Lada">Lada</option>		 
-      				</select> 
-      			</div>	
+        </div>
+  			<div class="form-group row ">
+  				<label class="col-form-label col-lg-3 col-sm-6" for="color"> What is your favourite color?</label>
+          <div class="col-lg-3 col-sm-6">
+  				  <input class="form-control" type="color" name="favouriteColor" id="color">
+        </div>
+  			</div>
+  			<div class="form-group row">
+  				<label class="col-form-label col-lg-3 col-sm-6" for="time"> What time do you go to bed?</label>
+          <div class="col-lg-3 col-sm-6">
+  				  <input class="form-control" type="time" name="timeToGoToBed" id="time">
           </div>
-          <div class="form-group form-inline">
-    				<label class="mr-3"> How do your rate our work?</label>
-    				<div>
-    					<input class="form-control-range custom-range" type="range" name="rateOurWork" id="rateOurWork">
-            </div>    				
-          </div>	
-    		</fieldset>
-      </div>
-  		<div class="row justify-content-center">
+  			</div>	
+        <div class="form-group row">
+  				<label class="col-form-label col-lg-3 col-sm-6"> What your favourite brand of car?</label>
+    			<div class="col-lg-3 col-sm-6">
+    				<select class="form-control custom-select" multiple name="favouriteBrandOfCar" id="brandOfCar">
+    					<option value="BMW">BMW</option>
+    					<option value="Audi">Audi</option>
+    					<option selected value="Lada">Lada</option>		 
+    				</select> 
+    			</div>	
+        </div>
+        <div class="form-group row">
+  				<label class="col-form-label col-lg-3 col-sm-6"> How do your rate our work?</label>
+  				<div class="col-lg-3 col-sm-6">
+  					<input class="form-control-range custom-range pt-3" type="range" name="rateOurWork" id="rateOurWork">
+          </div>    				
+        </div>	
+  		</fieldset>
+      
+      <hr class="text-primary mb-4">
+  		<div class="form-group row justify-content-center">
         <div class="offset-lg-2 offset-sm-3 col-lg-6 col-sm-6">
           <fieldset>
             <legend class="mb-3 text-info">Your comments:</legend>
-            <textarea class=" form-group form-control" rows="5" placeholder="Comments" name="comments" id="comments"></textarea>
+            <textarea class="form-control" rows="5" placeholder="Comments" name="comments" id="comments"></textarea>
           </fieldset>
         </div>
       </div>
+      <hr class="text-primary mb-4">
       <div class="flex-column form-inline align-items-end pb-5">
-        <input class="btn btn-outline-success btn-block col-lg-2 col-sm-4 mb-2" type="submit" value="Submit" name="submit">
-        <button class="btn btn-outline-danger btn-block col-lg-2 col-sm-4" type="reset" >Reset</button>
+        <input class="btn btn-outline-success btn-block col-lg-2 col-sm-2 mb-2 p-2" type="submit" value="Submit" name="submit">
+        <button class="btn btn-outline-danger btn-block col-lg-2 col-sm-2 p-2" type="reset" >Reset</button>
       </div>
     </form>
   </div>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+  $(function () {
+    $('[data-toggle="popover"]').popover();
+  });
+</script>
 </body>
 </html>
